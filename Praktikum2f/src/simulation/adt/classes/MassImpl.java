@@ -6,7 +6,7 @@ import simulation.adt.interfaces.Mass;
 
 public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
 
-    private MassImpl(double inValue) {
+    public MassImpl(double inValue) {
         super(inValue);
     }
     
@@ -45,7 +45,7 @@ public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
     
     @Override
     public Mass sub(Mass other) {
-        return MassImpl.valueOf(other.value() - this.value());
+        return this.add(MassImpl.valueOf(-other.value()));
     }    
     
     public String toString_EU() {
