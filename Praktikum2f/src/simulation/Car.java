@@ -218,7 +218,7 @@ public class Car implements ParticleInterface {
     
     public double forceBrake() {
         //System.out.println(getBreakLevel());
-        return brakeLevel * forcePropMax(getABS()) *  Math.signum(-getSpeed());
+        return brakeLevel * forcePropMax(getABS()) * Math.signum(-getSpeed());
     }
     
     public double force() {

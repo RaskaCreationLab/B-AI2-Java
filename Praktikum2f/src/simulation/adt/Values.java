@@ -17,7 +17,15 @@ public final class Values {
     
     private Values() {}
     
-    
+    //<editor-fold desc="specific calculations">
+    public static Power dragConst(Power powerPropMax, Speed speedMax) {
+        return power(powerPropMax.value() / Math.pow(speedMax.value(), 3.0)).abs();
+    }
+    public static Force forceDrag(Speed speedMax, Power dragConst) {
+        //*math.signum(-speed) fehlt noch
+        return force(dragConst.value() * Math.pow(speedMax.value(), 2.0));
+    }
+    //</editor-fold>
     
     // <editor-fold desc="Length">
     public static Length length(double value) {
