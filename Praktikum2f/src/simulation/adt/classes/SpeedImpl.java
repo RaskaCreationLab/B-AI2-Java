@@ -33,7 +33,7 @@ class SpeedImpl extends AbstractValueImpl<Speed> implements Speed{
         return SpeedImpl.valueOf(other * this.value);
     }
 
-    public Speed div(double other) {
+    public Speed divide(double other) {
         return SpeedImpl.valueOf(other / this.value);
     }   
     

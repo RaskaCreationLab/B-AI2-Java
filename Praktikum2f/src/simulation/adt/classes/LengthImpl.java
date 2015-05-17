@@ -33,7 +33,7 @@ class LengthImpl extends AbstractValueImpl<Length> implements Length{
         return LengthImpl.valueOf(other * this.value());
     }
 
-    public Length div(double other) {
+    public Length divide(double other) {
         return LengthImpl.valueOf(other / this.value());
     }   
     

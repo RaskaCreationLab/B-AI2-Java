@@ -21,8 +21,8 @@ public class test {
     }
     
     public final Mass mass = MassImpl.valueOf(20.0);
-    public final Force force = ForceImpl.valueof(4.0);
-    public final Acc acc = AccImpl.valueOf(inValue)
+    public final Force force = ForceImpl.valueOf(4.0);
+    public final Acc acc = AccImpl.valueOf(2.0);
     
     @BeforeClass
     public static void setUpClass() {
@@ -43,7 +43,7 @@ public class test {
     @Test
     public void testMassMul() {
         assertEquals(mass ,mass);
-        assertEquals()
+        assertEquals(force, mass.mul(acc));
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

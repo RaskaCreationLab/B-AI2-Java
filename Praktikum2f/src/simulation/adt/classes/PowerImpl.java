@@ -27,12 +27,12 @@ class PowerImpl extends AbstractValueImpl<Power> implements Power{
         return PowerImpl.valueOf(other.value() + this.value());
     }
 
-    public Power mul(Power other) {
-        return PowerImpl.valueOf(other.value() * this.value());
+    public Power mul(double other) {
+        return PowerImpl.valueOf(other * this.value());
     }
 
-    public Power div(Power other) {
-        return PowerImpl.valueOf(other.value() / this.value());
+    public Power div(double other) {
+        return PowerImpl.valueOf(this.value() / other);
     }   
     
     @Override

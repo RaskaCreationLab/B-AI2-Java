@@ -27,12 +27,12 @@ class WorkImpl extends AbstractValueImpl<Work> implements Work{
         return WorkImpl.valueOf(other.value() + this.value());
     }
 
-    public Work mul(Work other) {
-        return WorkImpl.valueOf(other.value() * this.value());
+    public Work mul(double other) {
+        return WorkImpl.valueOf(other * this.value());
     }
 
-    public Work div(Work other) {
-        return WorkImpl.valueOf(other.value() / this.value());
+    public Work div(double other) {
+        return WorkImpl.valueOf(this.value() / other);
     }   
     
     @Override

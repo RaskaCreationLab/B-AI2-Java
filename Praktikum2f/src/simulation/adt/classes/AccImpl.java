@@ -1,6 +1,9 @@
 package simulation.adt.classes;
 
 import simulation.adt.interfaces.Acc;
+import simulation.adt.interfaces.Mass;
+import simulation.adt.interfaces.Force;
+import simulation.adt.classes.MassImpl;
 
 public class AccImpl extends AbstractValueImpl<Acc> implements Acc{
 
@@ -31,9 +34,17 @@ public class AccImpl extends AbstractValueImpl<Acc> implements Acc{
         return AccImpl.valueOf(other * this.value());
     }
 
-    public Acc div(double other) {
+    public Acc divide(double other) {
         return AccImpl.valueOf(other / this.value());
     }   
+    
+    public Mass divM(Force other) {
+        return MassImpl.valueOf(this.value() / other.value());
+    }
+    
+    public Force divF(Mass other) {
+        return ForceImpl.valueOf(this.value() / other.value());
+    }
     
     @Override
     public Acc sub(Acc other) {

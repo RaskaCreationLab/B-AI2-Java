@@ -28,12 +28,12 @@ public class ForceImpl extends AbstractValueImpl<Force> implements Force{
         return ForceImpl.valueOf(other.value() + this.value());
     }
 
-    public Force mul(Force other) {
-        return ForceImpl.valueOf(other.value() * this.value());
+    public Force mul(double other) {
+        return ForceImpl.valueOf(other * this.value());
     }
         
-    public Force div(Force other) {
-        return ForceImpl.valueOf(other.value() / this.value());
+    public Force div(double other) {
+        return ForceImpl.valueOf(this.value() / other);
     }   
     
     @Override
