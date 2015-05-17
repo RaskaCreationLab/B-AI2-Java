@@ -8,7 +8,12 @@ public interface AbstractValue<E extends AbstractValue> extends Comparable<E> {
     public E fromPrototype(double value);
     public double value();
     public boolean checkInstance(Object obj);
+    
     default public E abs() {
         return this.fromPrototype(Math.abs(this.value()));
+    }
+    
+    default public E signum() {
+        return this.fromPrototype(Math.signum(this.value()));
     }
 }

@@ -5,7 +5,7 @@ import simulation.adt.interfaces.Force;
 
 public class ForceImpl extends AbstractValueImpl<Force> implements Force{
 
-    private ForceImpl(double inValue) {
+    public ForceImpl(double inValue) {
         super(inValue);
     }
     

@@ -7,7 +7,7 @@ import simulation.adt.classes.MassImpl;
 
 public class AccImpl extends AbstractValueImpl<Acc> implements Acc{
 
-    private AccImpl(double inValue) {
+    public AccImpl(double inValue) {
         super(inValue);
     }
     
