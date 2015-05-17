@@ -1,4 +1,4 @@
-package simulation.adt.classes;
+package simulation.adt;
 import simulation.adt.interfaces.AbstractValue;
 
 abstract class AbstractValueImpl<E extends AbstractValue> implements AbstractValue<E>{

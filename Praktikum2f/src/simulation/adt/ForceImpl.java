@@ -1,4 +1,4 @@
-package simulation.adt.classes;
+package simulation.adt;
 
 
 import simulation.adt.interfaces.Force;
@@ -40,6 +40,11 @@ public class ForceImpl extends AbstractValueImpl<Force> implements Force{
     public Force sub(Force other) {
         return ForceImpl.valueOf(other.value() - this.value());
     }    
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "N";

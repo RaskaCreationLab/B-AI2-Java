@@ -1,9 +1,9 @@
-package simulation.adt.classes;
+package simulation.adt;
 
 import simulation.adt.interfaces.Acc;
 import simulation.adt.interfaces.Mass;
 import simulation.adt.interfaces.Force;
-import simulation.adt.classes.MassImpl;
+import simulation.adt.MassImpl;
 
 public class AccImpl extends AbstractValueImpl<Acc> implements Acc{
 
@@ -54,6 +54,11 @@ public class AccImpl extends AbstractValueImpl<Acc> implements Acc{
     public Acc sub(double other) {
         return AccImpl.valueOf(other - this.value);
     }   
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "m/s²";

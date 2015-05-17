@@ -1,4 +1,4 @@
-package simulation.adt.classes;
+package simulation.adt;
 
 import simulation.adt.interfaces.Work;
 
@@ -39,6 +39,11 @@ class WorkImpl extends AbstractValueImpl<Work> implements Work{
     public Work sub(Work other) {
         return WorkImpl.valueOf(other.value() - this.value());
     }    
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "J";

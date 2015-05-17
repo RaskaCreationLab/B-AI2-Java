@@ -1,4 +1,4 @@
-package simulation.adt.classes;
+package simulation.adt;
 
 import simulation.adt.interfaces.Force;
 import simulation.adt.interfaces.Acc;
@@ -47,6 +47,11 @@ public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
     public Mass sub(Mass other) {
         return MassImpl.valueOf(other.value() - this.value());
     }    
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "kg";

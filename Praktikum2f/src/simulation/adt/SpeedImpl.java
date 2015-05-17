@@ -1,4 +1,4 @@
-package simulation.adt.classes;
+package simulation.adt;
 
 import simulation.adt.interfaces.Speed;
 import simulation.adt.interfaces.Acc;
@@ -45,6 +45,11 @@ class SpeedImpl extends AbstractValueImpl<Speed> implements Speed{
     public Speed sub(Speed other) {
         return SpeedImpl.valueOf(other.value() - this.value());
     }    
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "m/s";

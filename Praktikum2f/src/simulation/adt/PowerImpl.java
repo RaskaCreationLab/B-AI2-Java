@@ -1,4 +1,4 @@
-package simulation.adt.classes;
+package simulation.adt;
 
 import simulation.adt.interfaces.Power;
 
@@ -39,6 +39,11 @@ class PowerImpl extends AbstractValueImpl<Power> implements Power{
     public Power sub(Power other) {
         return PowerImpl.valueOf(other.value() - this.value());
     }    
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "W";
