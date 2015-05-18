@@ -1,6 +1,9 @@
 package simulation.adt.classes;
 
 import simulation.adt.interfaces.Power;
+import simulation.adt.interfaces.TimeDiff;
+import simulation.adt.interfaces.Force;
+import simulation.adt.interfaces.Work;
 
 class PowerImpl extends AbstractValueImpl<Power> implements Power{
 
@@ -27,13 +30,23 @@ class PowerImpl extends AbstractValueImpl<Power> implements Power{
         return PowerImpl.valueOf(other.value() + this.value());
     }
 
+    @Override
     public Power mul(double other) {
         return PowerImpl.valueOf(other * this.value());
     }
+    
+    public Work mul(TimeDiff other) {
+        return WorkImpl.valueOf(other.value() * this.value());
+    }
 
+    @Override
     public Power div(double other) {
         return PowerImpl.valueOf(this.value() / other);
     }   
+    
+    public Force div(TimeDiff other) {
+        return ForceImpl.valueOf(this.value() / other.value());
+    } 
     
     @Override
     public Power sub(Power other) {

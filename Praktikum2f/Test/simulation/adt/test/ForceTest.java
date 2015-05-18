@@ -17,7 +17,7 @@ public class ForceTest {
     Force force4 = Values.forceInN(20.0);
     
     Mass mass = Values.massInKG(10.0);
-    Acc acc = Values.accInMS2(100.0);
+    Acc acc = Values.accInMS2(2.0);
     Work work = Values.workInJ(10.0);
     Length length = Values.lengthInM(10.0);
     
@@ -37,9 +37,8 @@ public class ForceTest {
     
     @Test 
     public void testMul() {
-        assertEquals(acc,force3.mul(mass));
         assertEquals(force4,force3.mul(2.0));
-        assertEquals(work,force.mul(length));
+        assertEquals(work,force1.mul(length));
     }
     
     @Test
@@ -47,6 +46,7 @@ public class ForceTest {
         assertEquals(force1, force3.div(10.0));
         assertEquals(force1, force2.div(-1.0));
         assertEquals(force3, force4.div(2.0));
+        assertEquals(acc,force4.div(mass));
     }
     
     @Test 

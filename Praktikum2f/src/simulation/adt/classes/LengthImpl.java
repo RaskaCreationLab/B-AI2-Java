@@ -35,10 +35,15 @@ class LengthImpl extends AbstractValueImpl<Length> implements Length{
     public Work mul(Force other) {
         return WorkImpl.valueOf(other.value() * this.value());
     }
+    
+    @Override
+    public Length mul(double other) {
+        return LengthImpl.valueOf(other * this.value());
+    }
 
     @Override
     public Length div(double other) {
-        return LengthImpl.valueOf(other / this.value());
+        return LengthImpl.valueOf(this.value() / other);
     }   
     
     public Speed div(TimeDiff other) {

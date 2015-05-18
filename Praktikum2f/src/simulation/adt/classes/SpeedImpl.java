@@ -4,6 +4,7 @@ import simulation.adt.interfaces.Speed;
 import simulation.adt.interfaces.Acc;
 import simulation.adt.interfaces.Mass;
 import simulation.adt.interfaces.TimeDiff;
+import simulation.adt.interfaces.Length;
 
 class SpeedImpl extends AbstractValueImpl<Speed> implements Speed{
 
@@ -30,17 +31,23 @@ class SpeedImpl extends AbstractValueImpl<Speed> implements Speed{
         return SpeedImpl.valueOf(other.value() + this.value());
     }
 
+    @Override
     public Speed mul(double other) {
         return SpeedImpl.valueOf(other * this.value);
     }
+    
+    public Length mul(TimeDiff other) {
+        return LengthImpl.valueOf(this.value() * other.value());
+    }
 
+    @Override
     public Speed div(double other) {
-        return SpeedImpl.valueOf(other / this.value);
+        return SpeedImpl.valueOf(this.value / other);
     }   
     
-    public Acc div(TimeDiff other) {
-        return AccImpl.valueOf(this.value / other.value());
-    }
+//    public Acc div(TimeDiff other) {
+//        return AccImpl.valueOf(this.value / other.value());
+//    }
     
     @Override
     public Speed sub(Speed other) {

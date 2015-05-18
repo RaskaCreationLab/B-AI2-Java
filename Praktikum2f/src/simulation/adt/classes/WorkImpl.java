@@ -1,6 +1,8 @@
 package simulation.adt.classes;
 
 import simulation.adt.interfaces.Work;
+import simulation.adt.interfaces.TimeDiff;
+import simulation.adt.interfaces.Power;
 
 class WorkImpl extends AbstractValueImpl<Work> implements Work{
 
@@ -27,10 +29,20 @@ class WorkImpl extends AbstractValueImpl<Work> implements Work{
         return WorkImpl.valueOf(other.value() + this.value());
     }
 
+    @Override
     public Work mul(double other) {
         return WorkImpl.valueOf(other * this.value());
     }
-
+    
+    public Power div(TimeDiff other) {
+        return PowerImpl.valueOf(this.value() / other.value());
+    }
+    
+    public TimeDiff div(Work other) {
+        return TimeDiffImpl.valueOf(this.value() / other.value());
+    }
+    
+    @Override
     public Work div(double other) {
         return WorkImpl.valueOf(this.value() / other);
     }   

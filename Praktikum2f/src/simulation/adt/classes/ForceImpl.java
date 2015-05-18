@@ -43,14 +43,13 @@ public class ForceImpl extends AbstractValueImpl<Force> implements Force{
     }
     
     @Override
-    public Acc mul(Mass other) {
-        return AccImpl.valueOf(other.value() * this.value());
-    }
-    
-    @Override
     public Force div(double other) {
         return ForceImpl.valueOf(this.value() / other);
     }   
+    
+    public Acc div(Mass other) {
+       return AccImpl.valueOf(this.value() / other.value());
+    }
     
     @Override
     public Force sub(Force other) {

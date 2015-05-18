@@ -8,14 +8,14 @@ import simulation.adt.interfaces.TimeDiff;
 import simulation.adt.classes.Values;
 
 public class LengthTest {
-    Length length = Values.lengthInM(0.0);
+    Length length  = Values.lengthInM(0.0);
     Length length1 = Values.lengthInM(1.0);
     Length length2 = Values.lengthInM(2.0);
     Length length3 = Values.lengthInM(-1.0);
     Length length4 = Values.lengthInM(10.0);
     Length length5 = Values.lengthInM(20.0);
     
-    Speed speed = Values.speedInMS(20.0);
+    Speed speed = Values.speedInMS(2.0);
     
     TimeDiff timediff = Values.timeDiffInSec(10.0);
     
@@ -41,18 +41,19 @@ public class LengthTest {
     
     @Test
     public void testDiv() {
-        assertEquals(speed,length2.div(timediff));
+        assertEquals(speed,length5.div(timediff));
+        assertEquals(length1,length5.div(20.0));
         assertEquals(length4,length5.div(2.0));
     }
     
     @Test 
     public void testAbs() {
-        assertEquals();
+        assertEquals(length1,length3.abs());
     }
     
     @Test
     public void testSignum() {
-        assertEquals();
+        assertEquals(length1,length5.signum());
     }
         
     @Test

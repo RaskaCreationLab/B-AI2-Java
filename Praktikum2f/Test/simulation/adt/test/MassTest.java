@@ -6,12 +6,13 @@ import simulation.adt.interfaces.Mass;
 import simulation.adt.interfaces.Acc;
 import simulation.adt.interfaces.Force;
 import simulation.adt.classes.Values;
+import simulation.adt.units.MassUnit;
 
 public class MassTest {
-    Mass mass = Values.massInKG(30.0);
-    Mass mass1 = Values.massInKG(0.0);
+    Mass mass = Values.massInG(30000.0);
+    Mass mass1 = Values.ZERO_MASS;
     Mass mass2 = Values.massInKG(-30.0);
-    Mass mass3 = Values.massInKG(1.0);
+    Mass mass3 = Values.mass(1.0, MassUnit.KG);
     Mass mass4 = Values.massInKG(29.0);
     
     Acc acc = Values.accInMS2(10.0);

@@ -6,6 +6,7 @@
 package simulation.adt.classes;
 
 import simulation.adt.interfaces.*;
+import simulation.adt.units.MassUnit;
 
 public final class Values {
     static final double KILO = 1000.0;
@@ -15,15 +16,23 @@ public final class Values {
     static final double KG_IN_G = 1000.0;
     static final double KG_IN_T = 0.001;
     
+    public static final Length ZERO_LENGTH = length(0.0);
+    public static final Mass ZERO_MASS = mass(0.0);
+    public static final TimeDiff ZERO_TIMEDIFF = timeDiff(0.0);
+    public static final Speed ZERO_SPEED = speed(0.0);
+    public static final Force ZERO_FORCE = force(0.0);
+    public static final Power ZERO_POWER = power(0.0);
+    public static final Acc ZERO_ACC = acc(0.0);
+    public static final Work ZERO_WORK = work(0.0);
+    
     private Values() {}
     
-    //<editor-fold desc="specific calculations">
+    //<editor-fold desc="specific calculations / special cases">
     public static Power dragConst(Power powerPropMax, Speed speedMax) {
         return power(powerPropMax.value() / Math.pow(speedMax.value(), 3.0)).abs();
     }
-    public static Force forceDrag(Speed speedMax, Power dragConst) {
-        //*math.signum(-speed) fehlt noch
-        return force(dragConst.value() * Math.pow(speedMax.value(), 2.0));
+    public static Force forceDrag(Speed speedMax, Speed currentSpeed, Power dragConst) {
+        return force(dragConst.value() * Math.pow(speedMax.value(), 2.0)).mul(-currentSpeed.signum().value());
     }
     //</editor-fold>
     
@@ -63,15 +72,19 @@ public final class Values {
     }
     
     public static Mass massInG(double value) {
-        return MassImpl.valueOf(value * KG_IN_G);
+        return mass(value, MassUnit.G);
     }
     
     public static Mass massInKG(double value) {
-        return MassImpl.valueOf(value);
+        return mass(value, MassUnit.KG);
     }
     
     public static Mass massInT(double value) {
-        return MassImpl.valueOf(value * KG_IN_T);
+        return mass(value, MassUnit.T);
+    }
+    
+    public static Mass mass(double value, MassUnit unit) {
+        return MassImpl.valueOf(value * unit.factor());
     }
     //</editor-fold>
     //<editor-fold desc="Speed, Length / Time">
