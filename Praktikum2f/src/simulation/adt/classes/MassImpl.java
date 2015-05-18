@@ -6,7 +6,7 @@ import simulation.adt.interfaces.Mass;
 
 public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
 
-    public MassImpl(double inValue) {
+    private MassImpl(double inValue) {
         super(inValue);
     }
     

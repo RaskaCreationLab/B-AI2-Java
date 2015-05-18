@@ -16,7 +16,7 @@ public class MassImplTest {
     
     ForceImpl force = new ForceImpl(300.0);
     
-    String string ="30.0 kg";
+    String string = "30.0kg";
     
     @Test
     public void testAdd() {
