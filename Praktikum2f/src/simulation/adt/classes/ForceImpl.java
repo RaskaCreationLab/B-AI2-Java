@@ -2,6 +2,10 @@ package simulation.adt.classes;
 
 
 import simulation.adt.interfaces.Force;
+import simulation.adt.interfaces.Mass;
+import simulation.adt.interfaces.Acc;
+import simulation.adt.interfaces.Work;
+import simulation.adt.interfaces.Length;
 
 public class ForceImpl extends AbstractValueImpl<Force> implements Force{
 
@@ -28,18 +32,35 @@ public class ForceImpl extends AbstractValueImpl<Force> implements Force{
         return ForceImpl.valueOf(other.value() + this.value());
     }
 
+    @Override
     public Force mul(double other) {
         return ForceImpl.valueOf(other * this.value());
     }
-        
+   
+    @Override
+    public Work mul(Length other) {
+        return WorkImpl.valueOf(other.value() * this.value());
+    }
+    
+    @Override
+    public Acc mul(Mass other) {
+        return AccImpl.valueOf(other.value() * this.value());
+    }
+    
+    @Override
     public Force div(double other) {
         return ForceImpl.valueOf(this.value() / other);
     }   
     
     @Override
     public Force sub(Force other) {
-        return ForceImpl.valueOf(other.value() - this.value());
-    }    
+        return this.add(ForceImpl.valueOf(-other.value()));
+    }  
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "N";

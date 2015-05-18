@@ -37,8 +37,13 @@ class WorkImpl extends AbstractValueImpl<Work> implements Work{
     
     @Override
     public Work sub(Work other) {
-        return WorkImpl.valueOf(other.value() - this.value());
-    }    
+        return this.add(WorkImpl.valueOf(-other.value()));
+    } 
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "J";

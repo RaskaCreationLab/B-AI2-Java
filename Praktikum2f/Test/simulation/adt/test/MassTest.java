@@ -2,19 +2,21 @@ package simulation.adt.test;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import simulation.adt.classes.MassImpl;
-import simulation.adt.classes.AccImpl;
-import simulation.adt.classes.ForceImpl;
+import simulation.adt.interfaces.Mass;
+import simulation.adt.interfaces.Acc;
+import simulation.adt.interfaces.Force;
+import simulation.adt.classes.Values;
 
-public class MassImplTest {
-    MassImpl mass = new MassImpl(30.0);
-    MassImpl mass1 = new MassImpl(0.0);
-    MassImpl mass2 = new MassImpl(-30.0);
-    MassImpl mass3 = new MassImpl(1.0);
+public class MassTest {
+    Mass mass = Values.massInKG(30.0);
+    Mass mass1 = Values.massInKG(0.0);
+    Mass mass2 = Values.massInKG(-30.0);
+    Mass mass3 = Values.massInKG(1.0);
+    Mass mass4 = Values.massInKG(29.0);
     
-    AccImpl acc = new AccImpl(10.0);
+    Acc acc = Values.accInMS2(10.0);
     
-    ForceImpl force = new ForceImpl(300.0);
+    Force force = Values.forceInN(300.0);
     
     String string = "30.0kg";
     
@@ -26,16 +28,17 @@ public class MassImplTest {
     @Test 
     public void testSub() {
         assertEquals(mass1, mass.sub(mass));
-    }
-    
-    @Test
-    public void testMultiply() {
-        assertEquals(mass1, mass.multiply(0.0));
+        assertEquals(mass4, mass.sub(mass3));
+        assertEquals(mass2, mass1.sub(mass));
     }
     
     @Test 
     public void testMul() {
+        //Force
         assertEquals(force,mass.mul(acc));
+        //Mass
+        assertEquals(mass1, mass.mul(0.0));
+        assertEquals(mass, mass.mul(1.0));
     }
     
     @Test
@@ -55,6 +58,6 @@ public class MassImplTest {
         
     @Test
     public void testToString() {
-        assertEquals(string, mass.toString_EU());
+        assertEquals(string, mass.toString());
     }
 }

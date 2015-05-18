@@ -30,7 +30,7 @@ public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
     }
     
     @Override
-    public Mass multiply (double other) {
+    public Mass mul (double other) {
         return MassImpl.valueOf(other * this.value());
     }
     
@@ -48,10 +48,13 @@ public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
         return this.add(MassImpl.valueOf(-other.value()));
     }    
     
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
+    
     public String toString_EU() {
         String text = this.value + "kg";
         return text;
-    }
-
-    
+    }    
 }

@@ -2,6 +2,7 @@ package simulation.adt.classes;
 
 import simulation.adt.interfaces.Speed;
 import simulation.adt.interfaces.Acc;
+import simulation.adt.interfaces.Mass;
 import simulation.adt.interfaces.TimeDiff;
 
 class SpeedImpl extends AbstractValueImpl<Speed> implements Speed{
@@ -33,7 +34,7 @@ class SpeedImpl extends AbstractValueImpl<Speed> implements Speed{
         return SpeedImpl.valueOf(other * this.value);
     }
 
-    public Speed divide(double other) {
+    public Speed div(double other) {
         return SpeedImpl.valueOf(other / this.value);
     }   
     
@@ -43,8 +44,13 @@ class SpeedImpl extends AbstractValueImpl<Speed> implements Speed{
     
     @Override
     public Speed sub(Speed other) {
-        return SpeedImpl.valueOf(other.value() - this.value());
-    }    
+        return this.add(SpeedImpl.valueOf(-other.value()));
+    } 
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "m/s";

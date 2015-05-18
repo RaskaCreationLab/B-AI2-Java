@@ -37,8 +37,13 @@ class PowerImpl extends AbstractValueImpl<Power> implements Power{
     
     @Override
     public Power sub(Power other) {
-        return PowerImpl.valueOf(other.value() - this.value());
+        return this.add(PowerImpl.valueOf(-other.value()));
     }    
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "W";

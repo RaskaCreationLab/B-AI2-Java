@@ -1,5 +1,6 @@
 package simulation.adt.classes;
 
+import simulation.adt.interfaces.Mass;
 import simulation.adt.interfaces.TimeDiff;
 
 class TimeDiffImpl extends AbstractValueImpl<TimeDiff> implements TimeDiff{
@@ -37,8 +38,13 @@ class TimeDiffImpl extends AbstractValueImpl<TimeDiff> implements TimeDiff{
     
     @Override
     public TimeDiff sub(TimeDiff other) {
-        return TimeDiffImpl.valueOf(other.value() - this.value());
-    }    
+        return this.add(TimeDiffImpl.valueOf(-other.value()));
+    } 
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "s";

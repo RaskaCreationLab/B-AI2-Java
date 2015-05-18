@@ -1,6 +1,9 @@
 package simulation.adt.classes;
 
 import simulation.adt.interfaces.Length;
+import simulation.adt.interfaces.Mass;
+import simulation.adt.interfaces.Work;
+import simulation.adt.interfaces.Force;
 import simulation.adt.interfaces.Speed;
 import simulation.adt.interfaces.TimeDiff;
 
@@ -29,11 +32,12 @@ class LengthImpl extends AbstractValueImpl<Length> implements Length{
         return LengthImpl.valueOf(other.value() + this.value());
     }
     
-    public Length mul(double other) {
-        return LengthImpl.valueOf(other * this.value());
+    public Work mul(Force other) {
+        return WorkImpl.valueOf(other.value() * this.value());
     }
 
-    public Length divide(double other) {
+    @Override
+    public Length div(double other) {
         return LengthImpl.valueOf(other / this.value());
     }   
     
@@ -43,8 +47,13 @@ class LengthImpl extends AbstractValueImpl<Length> implements Length{
     
     @Override
     public Length sub(Length other) {
-        return LengthImpl.valueOf(other.value() - this.value());
-    }    
+        return this.add(LengthImpl.valueOf(-other.value()));
+    }     
+    
+    @Override
+    public String toString() {
+        return toString_EU();
+    }
     
     public String toString_EU() {
         String text = this.value + "m";
